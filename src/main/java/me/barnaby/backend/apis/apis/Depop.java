@@ -50,25 +50,21 @@ public class Depop implements API {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonProduct = jsonArray.getJSONObject(i);
 
-                long productId = jsonProduct.optLong("id", 0); // Using "id" instead of "productId"
-                String title = jsonProduct.optString("slug", "Unknown"); // Using "slug" instead of "title"
+                long productId = jsonProduct.optLong("id", 0);
+                String title = jsonProduct.optString("slug", "Unknown");
                 URL url = parseURL(jsonProduct.optString("url", ""));
 
-                // Using "images" array instead of a single "image" string
                 JSONArray imagesArray = jsonProduct.optJSONArray("images");
                 URL imageUrl = parseURL((imagesArray != null && imagesArray.length() > 0) ? imagesArray.getString(0) : "");
 
                 String brand = jsonProduct.optString("brand", "");
 
-                // Using "sizes" array instead of a single "size" string
                 JSONArray sizesArray = jsonProduct.optJSONArray("sizes");
                 String size = (sizesArray != null && sizesArray.length() > 0) ? sizesArray.getString(0) : "Unknown";
 
-                // Using "price" object instead of parsing from "price" object
                 JSONObject jsonPrice = jsonProduct.optJSONObject("price");
                 Price price = parsePrice(jsonPrice);
 
-                // Using "seller" object instead of parsing from "seller" object
                 JSONObject jsonSeller = jsonProduct.optJSONObject("seller");
                 Seller seller = parseSeller(jsonSeller);
 
@@ -81,7 +77,6 @@ public class Depop implements API {
             }
 
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
         }
 
@@ -110,9 +105,8 @@ public class Depop implements API {
 
             return new Price(amount, currency, fees);
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
-            return null; // Return null in case of an error
+            return null;
         }
     }
 

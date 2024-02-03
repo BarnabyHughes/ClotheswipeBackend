@@ -68,7 +68,6 @@ public class Vinted implements API {
             }
 
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
         }
 

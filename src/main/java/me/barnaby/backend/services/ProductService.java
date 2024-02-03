@@ -20,12 +20,6 @@ public class ProductService {
         productList.addAll(products);
     }
 
-
-    public void initializeProducts(List<Product> products) {
-        this.productList.addAll(products);
-        System.out.println("ProductService initialized with " + productList.size() + " products");
-    }
-
     public List<Product> getPaginatedProducts(int page, int size) {
         int startIndex = (page - 1) * size;
         int endIndex = Math.min(startIndex + size, productList.size());
