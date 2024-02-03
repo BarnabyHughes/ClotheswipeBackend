@@ -32,29 +32,4 @@ public class BackendApplication {
 		apiManager.initializeAPIs();
 		return apiManager;
 	}
-
-
-
-	private static List<Product> createExampleProducts() throws MalformedURLException {
-		List<Product> exampleProducts = new ArrayList<>();
-
-		for (int i = 1; i <= 20; i++) {
-			Product product = new Product(
-					i,
-					"Product" + i,
-					new URL("https://example.com/product" + i),
-					new URL("https://example.com/image" + i),
-					100 * i,
-					"Brand" + i,
-					"LARGE",
-					new Price(10.99, "USD", 1),
-					new Seller("test", new URL("https://www.google.com"), new URL("https://www.google.com"))
-			);
-
-			exampleProducts.add(product);
-		}
-
-		return exampleProducts;
-	}
-
 }
